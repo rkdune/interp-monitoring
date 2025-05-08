@@ -1,13 +1,13 @@
-# LLM Feature Analysis Tool
+# Interpretable LLM Command-Line Chat Interface
 
 A command-line tool that allows you to chat with Llama 3.3 70B Instruct while simultaneously viewing the internal "concepts" it's thinking about to form its responses.
 
 ## Features
 
 - Interactive chat with Llama 3.3 70B Instruct
+- Streamed responses
 - Real-time feature analysis of model responses
 - Configurable response length and feature analysis depth
-- Streaming responses for better user experience
 
 ## Setup
 
@@ -76,4 +76,4 @@ Top 4 Activating Features: The LLM is thinking about:
 
 - Settings persist throughout the conversation until changed
 - Type 'exit' or 'quit' to end the session
-- Your current settings after each response
+- Your current settings are displayed after each response

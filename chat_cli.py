@@ -55,10 +55,15 @@ def load_api_keys() -> tuple[str, str]:
 
 def get_model_response(client: OpenAI, messages: List[Dict[str, str]], max_tokens: int = 50) -> str:
     """Get response from the model."""
+    # Add system message to the start of the conversation
+    full_messages = [
+        {"role": "system", "content": "You are a helpful AI assistant. Keep all your responses to a single, concise sentence."}
+    ] + messages
+    
     completion = client.chat.completions.create(
         extra_body={},
         model="meta-llama/llama-3.3-70b-instruct:nitro",
-        messages=messages,
+        messages=full_messages,
         max_tokens=max_tokens
     )
     return completion.choices[0].message.content
@@ -126,11 +131,11 @@ def main():
             conversation_history.append({"role": "user", "content": user_input})
             
             # Get model response with loading animation
-            loading_animation = LoadingAnimation("Assistant is thinking", Fore.BLUE)
+            loading_animation = LoadingAnimation("Assistant is thinking", Fore.CYAN)
             loading_animation.start()
             response = get_model_response(openai_client, conversation_history)
             loading_animation.stop()
-            print(f"{Fore.BLUE}Assistant: {response}{Style.RESET_ALL}")
+            print(f"{Fore.CYAN}Assistant: {response}{Style.RESET_ALL}")
             
             # Add assistant response to history
             conversation_history.append({"role": "assistant", "content": response})

@@ -49,3 +49,8 @@ ENV/
 
 # Specific files
 tokenvsfeature.ipynb
+planning.txt
+pure_python_chart.py
+gnuplot_demo.py
+termplot_demo.py
+chart_demo.py
